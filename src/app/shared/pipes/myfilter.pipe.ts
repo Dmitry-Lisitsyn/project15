@@ -32,10 +32,7 @@ export class MyfilterPipe implements PipeTransform {
        
     };
 
-    return filteredValues;
-    
-    
- // }
+ 
 
   }
 
