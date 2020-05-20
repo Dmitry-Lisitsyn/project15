@@ -21,24 +21,50 @@ export class MyfilterPipe implements PipeTransform {
     let _fullname = searchName.split(" ");
 
     
-      let filteredValues = items;
+      let filteredValues =  items;
 
     if(_fullname[0] != "" && _fullname[0] != null ) {
 
       filteredValues = items.filter(
-        (item) => item.name.indexOf(_fullname[0]) !== -1
+        (item) => item.name.toLowerCase().indexOf(_fullname[0].toLowerCase()) !== -1
 
        );
 
       }
-    if(_fullname[1] != "" && _fullname[1] != null ) {
+    if(_fullname[0] != "" && _fullname[0] != null ) {
 
       filteredValues = items.filter(
-        (item) => item.surname.indexOf(_fullname[1]) !== -1
+        (item) => item.surname.toLowerCase().indexOf(_fullname[0].toLowerCase()) !== -1
 
        );
 
       }
+      if(_fullname[1] != "" && _fullname[1] != null ) {
+
+        filteredValues = items.filter(
+          (item) => item.name.toLowerCase().indexOf(_fullname[1].toLowerCase()) !== -1
+  
+         );
+  
+        }
+      if(_fullname[1] != "" && _fullname[1] != null ) {
+  
+        filteredValues = items.filter(
+          (item) => item.surname.toLowerCase().indexOf(_fullname[1].toLowerCase()) !== -1
+  
+         );
+  
+        }
+      // for ( let name_worker of items) {
+      //   if (name_worker.name.indexOf(_fullname[0]) !== -1) {
+      //     if (_fullname[1] == undefined || _fullname[1] == '') 
+      //     filteredValues.push(name_worker)
+      //     else {
+      //       if (name_worker.surname.indexOf(_fullname[1]) !== -1)
+      //        filteredValues.push(name_worker)
+      //     }
+      //   }
+      // }
     
     return filteredValues;
     
