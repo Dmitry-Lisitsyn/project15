@@ -18,57 +18,26 @@ export class MyfilterPipe implements PipeTransform {
   transform(items: any[], searchName: string): any[] {
 
     //this.container = items;
-    let _fullname = searchName.split(" ");
-
+    let _fullname = searchName;
+    let filteredValues = [];
     
-      let filteredValues =  items;
-
-    if(_fullname[0] != "" && _fullname[0] != null ) {
-
-      filteredValues = items.filter(
-        (item) => item.name.toLowerCase().indexOf(_fullname[0].toLowerCase()) !== -1
-
-       );
-
-      }
-    if(_fullname[0] != "" && _fullname[0] != null ) {
-
-      filteredValues = items.filter(
-        (item) => item.surname.toLowerCase().indexOf(_fullname[0].toLowerCase()) !== -1
-
-       );
-
-      }
-      if(_fullname[1] != "" && _fullname[1] != null ) {
-
-        filteredValues = items.filter(
-          (item) => item.name.toLowerCase().indexOf(_fullname[1].toLowerCase()) !== -1
-  
-         );
-  
-        }
-      if(_fullname[1] != "" && _fullname[1] != null ) {
-  
-        filteredValues = items.filter(
-          (item) => item.surname.toLowerCase().indexOf(_fullname[1].toLowerCase()) !== -1
-  
-         );
-  
-        }
-      // for ( let name_worker of items) {
-      //   if (name_worker.name.indexOf(_fullname[0]) !== -1) {
-      //     if (_fullname[1] == undefined || _fullname[1] == '') 
-      //     filteredValues.push(name_worker)
-      //     else {
-      //       if (name_worker.surname.indexOf(_fullname[1]) !== -1)
-      //        filteredValues.push(name_worker)
-      //     }
-      //   }
-      // }
+    // if (searchName == ''){
+    // return items;
+    // }else{
     
+
+    if((_fullname != "" || _fullname != null)) {
+
+      return filteredValues ? items.filter(item => (item.name+" "+item.surname).toLowerCase().indexOf(_fullname.toLowerCase()) !== -1) : items;
+       
+    };
+
     return filteredValues;
     
     
+ // }
+
   }
 
+ 
 }
